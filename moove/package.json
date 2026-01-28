@@ -1,0 +1,13 @@
+{
+  "name": "moove",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "backend": "cd backend && npm run dev",
+    "mobile": "cd mobile && npm start",
+    "install:all": "cd shared && npm install && cd ../backend && npm install && cd ../mobile && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
