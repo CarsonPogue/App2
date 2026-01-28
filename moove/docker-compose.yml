@@ -1,27 +1,39 @@
+# ============================================
+# MOOVE - Docker Compose Configuration
+# ============================================
+# This file sets up the development environment.
+# All secrets should be provided via environment variables.
+# NEVER hardcode secrets in this file!
+# ============================================
+
 version: '3.8'
 
 services:
+  # PostgreSQL with PostGIS extension
   postgres:
     image: postgis/postgis:14-3.3
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: moove
+      # These are set via .env file or environment variables
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      POSTGRES_DB: ${POSTGRES_DB:-moove}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/migrations:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
+  # Redis for caching and sessions
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - "${REDIS_PORT:-6379}:6379"
     volumes:
       - redis_data:/data
     healthcheck:
@@ -29,27 +41,54 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
+  # Backend API server
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "${BACKEND_PORT:-3001}:3001"
     environment:
-      NODE_ENV: development
-      DATABASE_URL: postgresql://postgres:password@postgres:5432/moove
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 3001
+      # Database connection uses internal Docker network
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/${POSTGRES_DB:-moove}
       REDIS_URL: redis://redis:6379
-      JWT_SECRET: development-secret-change-in-production
-      JWT_REFRESH_SECRET: development-refresh-secret-change-in-production
+      # JWT secrets - REQUIRED
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?JWT_REFRESH_SECRET is required}
+      # OAuth (optional)
+      GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:-}
+      GOOGLE_OAUTH_CLIENT_SECRET: ${GOOGLE_OAUTH_CLIENT_SECRET:-}
+      GOOGLE_OAUTH_CALLBACK_URL: ${GOOGLE_OAUTH_CALLBACK_URL:-}
+      APPLE_CLIENT_ID: ${APPLE_CLIENT_ID:-}
+      APPLE_TEAM_ID: ${APPLE_TEAM_ID:-}
+      APPLE_KEY_ID: ${APPLE_KEY_ID:-}
+      APPLE_PRIVATE_KEY: ${APPLE_PRIVATE_KEY:-}
+      # Third-party APIs (optional)
+      TICKETMASTER_API_KEY: ${TICKETMASTER_API_KEY:-}
+      SEATGEEK_CLIENT_ID: ${SEATGEEK_CLIENT_ID:-}
+      SEATGEEK_CLIENT_SECRET: ${SEATGEEK_CLIENT_SECRET:-}
+      GOOGLE_PLACES_API_KEY: ${GOOGLE_PLACES_API_KEY:-}
+      # Email (optional)
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY:-}
+      FROM_EMAIL: ${FROM_EMAIL:-noreply@themoove.app}
+      # Monitoring (optional)
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      # CORS
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8081}
     depends_on:
       postgres:
         condition: service_healthy
       redis:
         condition: service_healthy
     volumes:
+      # Mount source code for hot reloading in development
       - ./backend/src:/app/src
     command: npm run dev
+    restart: unless-stopped
 
 volumes:
   postgres_data:
