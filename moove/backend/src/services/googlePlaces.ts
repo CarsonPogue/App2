@@ -1,5 +1,5 @@
 import { config } from '../config';
-import type { EventSource, EventCategory, GeoLocation } from '@moove/shared/types';
+import type { EventCategory, GeoLocation } from '@moove/shared/types';
 
 const GOOGLE_PLACES_API_BASE = 'https://maps.googleapis.com/maps/api/place';
 
@@ -94,7 +94,7 @@ export async function searchNearbyPlaces(
       throw new Error(`Google Places API error: ${response.status}`);
     }
 
-    const data: NearbySearchResponse = await response.json();
+    const data = await response.json() as NearbySearchResponse;
 
     if (data.status !== 'OK' && data.status !== 'ZERO_RESULTS') {
       console.error('Google Places API error:', data.status);

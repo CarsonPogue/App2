@@ -228,3 +228,62 @@ export async function areFriends(userId1: string, userId2: string): Promise<bool
 
   return result.rows.length > 0;
 }
+
+export async function getFriendSuggestions(userId: string): Promise<any[]> {
+  const result = await query<{
+    id: string;
+    user_id: string;
+    suggested_user_id: string;
+    username: string;
+    display_name: string;
+    avatar_url: string | null;
+    reason: string | null;
+    mutual_friends_count: number;
+    common_interests: any;
+    score: string;
+    created_at: Date;
+  }>(
+    `SELECT
+      fs.*,
+      u.id, u.username, u.display_name, u.avatar_url
+    FROM friend_suggestions fs
+    JOIN users u ON fs.suggested_user_id = u.id
+    WHERE fs.user_id = $1 AND fs.dismissed = false
+    ORDER BY fs.score DESC, fs.mutual_friends_count DESC
+    LIMIT 10`,
+    [userId]
+  );
+
+  return result.rows.map((row) => ({
+    id: row.id,
+    userId: row.user_id,
+    suggestedUser: {
+      id: row.suggested_user_id,
+      username: row.username,
+      displayName: row.display_name,
+      avatarUrl: row.avatar_url,
+    },
+    reason: row.reason,
+    mutualFriendsCount: row.mutual_friends_count,
+    commonInterests: row.common_interests,
+    score: parseFloat(row.score),
+    createdAt: row.created_at,
+  }));
+}
+
+export async function dismissFriendSuggestion(
+  suggestionId: string,
+  userId: string
+): Promise<void> {
+  const result = await query(
+    `UPDATE friend_suggestions
+     SET dismissed = true
+     WHERE id = $1 AND user_id = $2
+     RETURNING id`,
+    [suggestionId, userId]
+  );
+
+  if (result.rowCount === 0) {
+    throw new NotFoundError('Friend suggestion');
+  }
+}

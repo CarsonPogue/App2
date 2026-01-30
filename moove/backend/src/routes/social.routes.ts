@@ -167,4 +167,34 @@ router.get('/friends/:userId/events', authenticate, async (req: AuthRequest, res
   }
 });
 
+// GET /api/v1/social/suggestions
+router.get('/suggestions', authenticate, async (req: AuthRequest, res, next) => {
+  try {
+    const suggestions = await friendshipModel.getFriendSuggestions(req.userId!);
+
+    res.json({
+      success: true,
+      data: { items: suggestions },
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// POST /api/v1/social/suggestions/:suggestionId/dismiss
+router.post('/suggestions/:suggestionId/dismiss', authenticate, writeLimiter, async (req: AuthRequest, res, next) => {
+  try {
+    const { suggestionId } = z.object({ suggestionId: uuidSchema }).parse(req.params);
+
+    await friendshipModel.dismissFriendSuggestion(suggestionId, req.userId!);
+
+    res.json({
+      success: true,
+      data: { message: 'Suggestion dismissed' },
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default router;

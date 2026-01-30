@@ -17,6 +17,9 @@ import socialRoutes from './routes/social.routes';
 import inviteRoutes from './routes/invite.routes';
 import artistRoutes from './routes/artist.routes';
 import placesRoutes from './routes/places.routes';
+import bookmarkRoutes from './routes/bookmark.routes';
+import notificationRoutes from './routes/notification.routes';
+import blockRoutes from './routes/block.routes';
 
 // Jobs
 import { startEventAggregationJob } from './jobs/eventAggregation';
@@ -61,6 +64,9 @@ app.use(`${API_PREFIX}/social`, socialRoutes);
 app.use(`${API_PREFIX}/invites`, inviteRoutes);
 app.use(`${API_PREFIX}/artists`, artistRoutes);
 app.use(`${API_PREFIX}/places`, placesRoutes);
+app.use(`${API_PREFIX}`, bookmarkRoutes);
+app.use(`${API_PREFIX}`, notificationRoutes);
+app.use(`${API_PREFIX}`, blockRoutes);
 
 // 404 handler
 app.use((_req, res) => {

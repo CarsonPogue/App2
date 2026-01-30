@@ -239,14 +239,7 @@ export async function findEvents(
 
   const offset = (page - 1) * pageSize;
 
-  // Build count query with renumbered parameters
-  const countConditions = conditions.map((cond, idx) => {
-    if (idx === 0) return cond; // 'e.start_time > NOW()' has no params
-    // Renumber params starting from $1
-    return cond.replace(/\$\d+/g, () => `$${countParams.indexOf(countParams[idx - 1]) + 1}`);
-  });
-
-  // Actually, let's rebuild count conditions properly
+  // Build count conditions properly
   const countConditionsList: string[] = ['e.start_time > NOW()'];
   let countIdx = 1;
 

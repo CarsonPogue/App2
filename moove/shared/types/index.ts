@@ -282,3 +282,80 @@ export interface EventFilters {
 export interface TimeFrame {
   type: 'tonight' | 'week' | 'month';
 }
+
+// -------------------- Enhanced Social Types --------------------
+
+export interface EventBookmark extends Timestamps {
+  id: string;
+  userId: string;
+  eventId: string;
+}
+
+export interface UserBlock extends Timestamps {
+  id: string;
+  blockerId: string;
+  blockedId: string;
+}
+
+export interface FriendSuggestion extends Timestamps {
+  id: string;
+  userId: string;
+  suggestedUserId: string;
+  reason: string | null;
+  mutualFriendsCount: number;
+  commonInterests: string[];
+  score: number;
+  dismissed: boolean;
+}
+
+export interface FriendSuggestionWithUser extends FriendSuggestion {
+  suggestedUser: UserSummary;
+  mutualFriends: UserSummary[];
+}
+
+// -------------------- Notification Types --------------------
+
+export enum NotificationType {
+  FRIEND_REQUEST = 'friend_request',
+  FRIEND_ACCEPTED = 'friend_accepted',
+  EVENT_INVITE = 'event_invite',
+  EVENT_REMINDER = 'event_reminder',
+  COMMENT_REPLY = 'comment_reply',
+  COMMENT_MENTION = 'comment_mention',
+  RSVP_UPDATE = 'rsvp_update',
+  NEW_EVENT_NEARBY = 'new_event_nearby',
+}
+
+export interface Notification extends Timestamps {
+  id: string;
+  userId: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  data: Record<string, any>;
+  read: boolean;
+  readAt: Date | null;
+}
+
+export interface CommentReaction extends Timestamps {
+  id: string;
+  commentId: string;
+  userId: string;
+  reaction: string;
+}
+
+export interface CommentWithReactions extends CommentWithUser {
+  reactions: CommentReaction[];
+  reactionCounts: Record<string, number>;
+  userReaction: string | null;
+}
+
+// -------------------- Activity Tracking --------------------
+
+export interface UserActivity extends Timestamps {
+  id: string;
+  userId: string;
+  activityType: string;
+  eventId: string | null;
+  metadata: Record<string, any>;
+}
