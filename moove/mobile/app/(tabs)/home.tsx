@@ -170,7 +170,7 @@ export default function HomeScreen() {
           <RefreshControl
             refreshing={isRefetching}
             onRefresh={refetch}
-            tintColor={colors.primary.kineticOrange}
+            tintColor={colors.primary.sage}
           />
         }
       >
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   toggleButtonActive: {
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
   },
   filters: {
     paddingVertical: spacing.md,

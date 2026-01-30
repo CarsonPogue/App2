@@ -89,7 +89,7 @@ export default function SocialScreen() {
               <RefreshControl
                 refreshing={friends.isRefetching}
                 onRefresh={() => friends.refetch()}
-                tintColor={colors.primary.kineticOrange}
+                tintColor={colors.primary.sage}
               />
             }
           >
@@ -127,7 +127,7 @@ export default function SocialScreen() {
               <RefreshControl
                 refreshing={friendRequests.isRefetching}
                 onRefresh={() => friendRequests.refetch()}
-                tintColor={colors.primary.kineticOrange}
+                tintColor={colors.primary.sage}
               />
             }
           >
@@ -163,7 +163,7 @@ export default function SocialScreen() {
               placeholder="Search by username or name..."
             />
             {isSearching ? (
-              <ActivityIndicator color={colors.primary.kineticOrange} style={styles.loader} />
+              <ActivityIndicator color={colors.primary.sage} style={styles.loader} />
             ) : searchResults.length > 0 ? (
               <ScrollView style={styles.searchResults} showsVerticalScrollIndicator={false}>
                 {searchResults.map((user) => {
@@ -255,7 +255,7 @@ export default function SocialScreen() {
         >
           <Text
             variant="label"
-            color={activeTab === 'friends' ? colors.primary.kineticOrange : colors.text.muted}
+            color={activeTab === 'friends' ? colors.primary.sage : colors.text.muted}
           >
             Friends
           </Text>
@@ -270,7 +270,7 @@ export default function SocialScreen() {
         >
           <Text
             variant="label"
-            color={activeTab === 'requests' ? colors.primary.kineticOrange : colors.text.muted}
+            color={activeTab === 'requests' ? colors.primary.sage : colors.text.muted}
           >
             Requests
           </Text>
@@ -285,7 +285,7 @@ export default function SocialScreen() {
         >
           <Text
             variant="label"
-            color={activeTab === 'find' ? colors.primary.kineticOrange : colors.text.muted}
+            color={activeTab === 'find' ? colors.primary.sage : colors.text.muted}
           >
             Find Friends
           </Text>
@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.full,
   },
   tabActive: {
-    backgroundColor: `${colors.primary.kineticOrange}15`,
+    backgroundColor: `${colors.primary.sage}15`,
   },
   scrollView: {
     flex: 1,
@@ -362,7 +362,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
     alignItems: 'center',
     justifyContent: 'center',
   },

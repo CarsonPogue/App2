@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   fallback: {
-    backgroundColor: colors.secondary.electricTeal,
+    backgroundColor: colors.primary.sage,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -36,10 +36,10 @@ export default function WelcomeScreen() {
       <Animated.View style={[styles.gradientContainer, animatedGradientStyle]}>
         <LinearGradient
           colors={[
-            colors.primary.kineticOrange,
-            colors.accent.pulsePurple,
-            colors.secondary.electricTeal,
-            colors.primary.kineticOrange,
+            colors.primary.sage,
+            colors.accent.coral,
+            colors.primary.lightSage,
+            colors.primary.sage,
           ]}
           style={styles.gradient}
           start={{ x: 0, y: 0 }}
@@ -130,7 +130,7 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.primary.deepMidnight,
+    backgroundColor: colors.text.primary,
   },
   gradientContainer: {
     position: 'absolute',

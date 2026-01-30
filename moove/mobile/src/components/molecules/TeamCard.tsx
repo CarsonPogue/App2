@@ -77,7 +77,7 @@ export function TeamCard({ team, selected = false, onPress, disabled = false }: 
         variant="label"
         style={styles.name}
         numberOfLines={2}
-        color={selected ? colors.primary.kineticOrange : colors.text.primary}
+        color={selected ? colors.primary.sage : colors.text.primary}
       >
         {team.name}
       </Text>
@@ -97,9 +97,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.secondary,
   },
   selected: {
-    backgroundColor: colors.primary.kineticOrange + '20',
+    backgroundColor: colors.primary.sage + '20',
     borderWidth: 2,
-    borderColor: colors.primary.kineticOrange,
+    borderColor: colors.primary.sage,
   },
   disabled: {
     opacity: 0.6,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     width: 18,
     height: 18,
     borderRadius: 9,
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
     alignItems: 'center',
     justifyContent: 'center',
   },

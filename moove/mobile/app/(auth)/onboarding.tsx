@@ -14,31 +14,31 @@ const STEP_CONFIG = [
   {
     title: "Who's on your playlist? 🎵",
     subtitle: "We'll let you know when your faves are in town",
-    gradientColors: ['#FF6B6B', '#FF8E53'] as const,
+    gradientColors: ['#E07A5F', '#E89981'] as const,
     emoji: '🎤',
   },
   {
     title: "What sounds make you move? 🎶",
     subtitle: "Pick your favorite vibes",
-    gradientColors: ['#667eea', '#764ba2'] as const,
+    gradientColors: ['#88A084', '#A5B8A1'] as const,
     emoji: '🎧',
   },
   {
     title: "Who's your squad? 🏆",
     subtitle: "Never miss a game day again",
-    gradientColors: ['#11998e', '#38ef7d'] as const,
+    gradientColors: ['#6B8067', '#88A084'] as const,
     emoji: '⚽',
   },
   {
     title: "What gets you excited? ✨",
     subtitle: "Help us find your perfect events",
-    gradientColors: ['#f093fb', '#f5576c'] as const,
+    gradientColors: ['#E07A5F', '#C96A51'] as const,
     emoji: '🎉',
   },
   {
     title: "Where's the party at? 📍",
     subtitle: "Show us where you like to hang",
-    gradientColors: ['#4facfe', '#00f2fe'] as const,
+    gradientColors: ['#A5B8A1', '#88A084'] as const,
     emoji: '🌆',
   },
 ];
@@ -327,7 +327,7 @@ export default function OnboardingScreen() {
                 {artistSearch.trim() ? 'Search Results' : 'Popular Artists'}
               </Text>
               {(artistsLoading || isSearching) ? (
-                <ActivityIndicator color={colors.primary.kineticOrange} style={styles.loader} />
+                <ActivityIndicator color={colors.primary.sage} style={styles.loader} />
               ) : (
                 <View style={styles.artistGrid}>
                   {displayArtists.map((artist) => (
@@ -427,7 +427,7 @@ export default function OnboardingScreen() {
                 {teamSearch.trim() ? 'Search Results' : 'Popular Teams'}
               </Text>
               {(teamsLoading || isSearchingTeams) ? (
-                <ActivityIndicator color={colors.primary.kineticOrange} style={styles.loader} />
+                <ActivityIndicator color={colors.primary.sage} style={styles.loader} />
               ) : (
                 <View style={styles.artistGrid}>
                   {displayTeams.map((team) => (
@@ -627,7 +627,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.gray[300],
   },
   progressDotActive: {
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
     width: 24,
   },
   scrollView: {
@@ -717,7 +717,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   radiusOptionSelected: {
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
   },
   navigation: {
     flexDirection: 'row',

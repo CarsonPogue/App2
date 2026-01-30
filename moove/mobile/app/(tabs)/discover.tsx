@@ -192,7 +192,7 @@ export default function DiscoverScreen() {
           <RefreshControl
             refreshing={isRefetching}
             onRefresh={refetch}
-            tintColor={colors.primary.kineticOrange}
+            tintColor={colors.primary.sage}
           />
         }
         onEndReached={() => {

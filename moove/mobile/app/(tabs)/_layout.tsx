@@ -16,7 +16,7 @@ function TabIcon({ icon, label, focused }: TabIconProps) {
         {icon}
       </Text>
       {focused && (
-        <Text variant="labelSmall" color={colors.primary.kineticOrange}>
+        <Text variant="labelSmall" color={colors.primary.sage}>
           {label}
         </Text>
       )}

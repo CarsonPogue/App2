@@ -96,7 +96,7 @@ export default function EditProfileScreen() {
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={handlePickImage}>
-            <Text variant="label" color={colors.primary.kineticOrange} style={styles.changePhotoText}>
+            <Text variant="label" color={colors.primary.sage} style={styles.changePhotoText}>
               Change Photo
             </Text>
           </TouchableOpacity>
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     right: 0,
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.xs,
     borderRadius: borderRadius.sm,

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   selected: {
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
   },
   disabled: {
     opacity: 0.5,

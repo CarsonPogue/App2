@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.success,
   },
   buttonInterested: {
-    backgroundColor: colors.secondary.electricTeal,
+    backgroundColor: colors.primary.sage,
   },
   buttonNotGoing: {
     backgroundColor: colors.gray[500],

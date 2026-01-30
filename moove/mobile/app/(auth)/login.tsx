@@ -92,7 +92,7 @@ export default function LoginScreen() {
 
           <Link href="/(auth)/forgot-password" asChild>
             <TouchableOpacity style={styles.forgotPassword}>
-              <Text variant="label" color={colors.primary.kineticOrange}>
+              <Text variant="label" color={colors.primary.sage}>
                 Forgot password?
               </Text>
             </TouchableOpacity>
@@ -114,7 +114,7 @@ export default function LoginScreen() {
           </Text>
           <Link href="/(auth)/register" asChild>
             <TouchableOpacity>
-              <Text variant="body" color={colors.primary.kineticOrange}>
+              <Text variant="body" color={colors.primary.sage}>
                 Sign up
               </Text>
             </TouchableOpacity>

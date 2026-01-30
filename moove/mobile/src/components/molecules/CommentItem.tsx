@@ -65,7 +65,7 @@ export function CommentItem({
 
         {onReply && !isReply && (
           <TouchableOpacity onPress={onReply} style={styles.replyButton}>
-            <Text variant="label" color={colors.primary.kineticOrange}>
+            <Text variant="label" color={colors.primary.sage}>
               Reply
             </Text>
           </TouchableOpacity>

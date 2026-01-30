@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   containerFocused: {
     backgroundColor: colors.white,
-    borderColor: colors.primary.kineticOrange,
+    borderColor: colors.primary.sage,
   },
   searchIcon: {
     fontSize: 16,

@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   focused: {
-    borderColor: colors.primary.kineticOrange,
+    borderColor: colors.primary.sage,
     backgroundColor: colors.white,
   },
   error: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     ...typography.label.regular,
-    color: colors.primary.kineticOrange,
+    color: colors.primary.sage,
   },
   errorText: {
     ...typography.label.regular,

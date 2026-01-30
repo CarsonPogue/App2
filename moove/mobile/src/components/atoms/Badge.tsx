@@ -28,8 +28,8 @@ const variantColors = {
     text: colors.error,
   },
   info: {
-    background: `${colors.secondary.electricTeal}20`,
-    text: colors.secondary.electricTeal,
+    background: `${colors.primary.sage}20`,
+    text: colors.primary.sage,
   },
 };
 

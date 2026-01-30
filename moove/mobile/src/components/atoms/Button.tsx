@@ -73,7 +73,7 @@ export function Button({
     >
       {loading ? (
         <ActivityIndicator
-          color={variant === 'primary' ? colors.white : colors.primary.kineticOrange}
+          color={variant === 'primary' ? colors.white : colors.primary.sage}
           size="small"
         />
       ) : (
@@ -98,12 +98,12 @@ const styles = StyleSheet.create({
 
   // Variants
   primary: {
-    backgroundColor: colors.primary.kineticOrange,
+    backgroundColor: colors.primary.sage,
   },
   secondary: {
     backgroundColor: 'transparent',
     borderWidth: 2,
-    borderColor: colors.primary.kineticOrange,
+    borderColor: colors.primary.sage,
   },
   ghost: {
     backgroundColor: 'transparent',
@@ -134,10 +134,10 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
   secondaryText: {
-    color: colors.primary.kineticOrange,
+    color: colors.primary.sage,
   },
   ghostText: {
-    color: colors.primary.kineticOrange,
+    color: colors.primary.sage,
   },
   dangerText: {
     color: colors.white,

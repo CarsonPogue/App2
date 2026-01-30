@@ -163,7 +163,7 @@ export default function RegisterScreen() {
           </Text>
           <Link href="/(auth)/login" asChild>
             <TouchableOpacity>
-              <Text variant="body" color={colors.primary.kineticOrange}>
+              <Text variant="body" color={colors.primary.sage}>
                 Sign in
               </Text>
             </TouchableOpacity>

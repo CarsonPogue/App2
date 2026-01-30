@@ -230,7 +230,7 @@ export default function EventDetailScreen() {
             <View>
               <Text variant="body">{formatDateTime(event.startTime)}</Text>
               <TouchableOpacity onPress={handleAddToCalendar}>
-                <Text variant="label" color={colors.primary.kineticOrange}>
+                <Text variant="label" color={colors.primary.sage}>
                   Add to Calendar
                 </Text>
               </TouchableOpacity>
@@ -245,7 +245,7 @@ export default function EventDetailScreen() {
               <Text variant="bodySmall" color={colors.text.muted}>
                 {event.venueAddress}
               </Text>
-              <Text variant="label" color={colors.primary.kineticOrange}>
+              <Text variant="label" color={colors.primary.sage}>
                 Open in Maps
               </Text>
             </View>
@@ -363,7 +363,7 @@ export default function EventDetailScreen() {
         >
           <Text
             variant="label"
-            color={newComment.trim() ? colors.primary.kineticOrange : colors.gray[400]}
+            color={newComment.trim() ? colors.primary.sage : colors.gray[400]}
           >
             Send
           </Text>

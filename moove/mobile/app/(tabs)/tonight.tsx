@@ -122,7 +122,7 @@ export default function TonightScreen() {
           <RefreshControl
             refreshing={isRefetching}
             onRefresh={refetch}
-            tintColor={colors.primary.kineticOrange}
+            tintColor={colors.primary.sage}
           />
         }
       >

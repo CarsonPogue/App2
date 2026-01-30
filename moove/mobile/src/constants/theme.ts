@@ -1,59 +1,62 @@
-// MOOVE Design System - "Fluid Motion"
-// Dynamic energy meets refined simplicity
+// MOOVE Design System - Natural & Warm
+// Earthy elegance meets modern simplicity
 
 export const colors = {
   // Primary
   primary: {
-    kineticOrange: '#FF7A3D',
-    deepMidnight: '#0D0D1A',
+    sage: '#88A084',
+    darkSage: '#6B8067',
+    lightSage: '#A5B8A1',
   },
 
   // Secondary
   secondary: {
-    warmSand: '#F7F3ED',
-    electricTeal: '#00D4AA',
+    cream: '#F5F2E9',
+    warmCream: '#EFEADD',
+    lightCream: '#FAF8F3',
   },
 
   // Accent
   accent: {
-    pulsePurple: '#8B5CF6',
-    softBlush: '#FFB8B8',
+    coral: '#E07A5F',
+    darkCoral: '#C96A51',
+    lightCoral: '#E89981',
   },
 
   // Functional
-  success: '#10B981',
-  warning: '#F59E0B',
-  error: '#EF4444',
+  success: '#88A084',
+  warning: '#E0A35F',
+  error: '#E07A5F',
 
   // Neutrals
   white: '#FFFFFF',
-  black: '#000000',
+  black: '#1A1A1A',
   gray: {
-    50: '#F9FAFB',
-    100: '#F3F4F6',
-    200: '#E5E7EB',
-    300: '#D1D5DB',
-    400: '#9CA3AF',
-    500: '#6B7280',
-    600: '#4B5563',
-    700: '#374151',
-    800: '#1F2937',
-    900: '#111827',
+    50: '#FAF8F3',
+    100: '#F5F2E9',
+    200: '#E8E4D8',
+    300: '#D4CFC0',
+    400: '#AFA99A',
+    500: '#837D6F',
+    600: '#6B6659',
+    700: '#4F4B40',
+    800: '#353229',
+    900: '#1F1D18',
   },
 
   // Text
   text: {
-    primary: '#0D0D1A',
-    secondary: '#4B5563',
-    muted: '#71717A',
-    inverse: '#FFFFFF',
+    primary: '#1A1A1A',
+    secondary: '#4F4B40',
+    muted: '#837D6F',
+    inverse: '#F5F2E9',
   },
 
   // Backgrounds
   background: {
-    primary: '#FFFFFF',
-    secondary: '#F7F3ED',
-    dark: '#0D0D1A',
+    primary: '#F5F2E9',
+    secondary: '#FAF8F3',
+    dark: '#1F1D18',
     card: '#FFFFFF',
   },
 } as const;
@@ -212,16 +215,16 @@ export const layout = {
 
 // Category-specific colors
 export const categoryColors = {
-  concert: '#FF7A3D',
-  sports: '#10B981',
-  restaurant: '#F59E0B',
-  bar: '#8B5CF6',
-  theater: '#EF4444',
-  festival: '#00D4AA',
-  comedy: '#FFB8B8',
-  arts: '#06B6D4',
-  nightlife: '#8B5CF6',
-  other: '#6B7280',
+  concert: '#E07A5F',
+  sports: '#88A084',
+  restaurant: '#D4A574',
+  bar: '#B88B7F',
+  theater: '#E07A5F',
+  festival: '#88A084',
+  comedy: '#E89981',
+  arts: '#A5B8A1',
+  nightlife: '#B88B7F',
+  other: '#AFA99A',
 } as const;
 
 export type CategoryColor = keyof typeof categoryColors;
