@@ -183,9 +183,18 @@ export default function OnboardingScreen() {
       setLoading(true);
       try {
         await api.updatePreferences({
-          favoriteArtists: selectedArtists,
+          favoriteArtists: selectedArtists.map(artist => ({
+            id: artist.id,
+            name: artist.name,
+            imageUrl: artist.imageUrl ?? undefined,
+          })),
           favoriteGenres: selectedGenres,
-          sportsTeams: selectedTeams,
+          sportsTeams: selectedTeams.map(team => ({
+            id: team.id,
+            name: team.name,
+            sport: team.sport,
+            logoUrl: team.imageUrl ?? undefined,
+          })),
           interests: selectedInterests,
           radiusMiles,
         });
@@ -535,7 +544,7 @@ export default function OnboardingScreen() {
     <View style={styles.container}>
       {/* Gradient accent at top */}
       <LinearGradient
-        colors={currentConfig.gradientColors}
+        colors={[...currentConfig.gradientColors]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.gradientAccent}
